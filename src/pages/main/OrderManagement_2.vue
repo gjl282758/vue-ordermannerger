@@ -178,7 +178,7 @@ export default {
       loading: true,
 
       //查询
-      option: ["已完成", "已受理", "派送中","全部"],
+      option: ["已完成", "已受理", "派送中", "全部"],
       searchorderNo: "",
       searchconsignee: "",
       searchphone: "",
@@ -244,12 +244,11 @@ export default {
       this.loading = true; //加载
       // setTimeout(() => {}, 1000);
       //延迟出现
-      Getorderlist(
-        {
-        currentPage:this.currentPage,
-        pageSize:this.pageSize,
-        ...paramsex}
-      ).then((res) => {
+      Getorderlist({
+        currentPage: this.currentPage,
+        pageSize: this.pageSize,
+        ...paramsex,
+      }).then((res) => {
         // console.log(res);
         let arr = res.data.data;
         for (let obj of arr) {
@@ -284,9 +283,10 @@ export default {
       this.pageSize = newpageSize;
       this.getdata();
     },
+    //分页
     handleCurrentChange(newpage) {
       this.currentPage = newpage;
-      this.getdata();
+      this.getdata(this.paramsex);
     },
     //查询
     click_get() {
@@ -298,16 +298,17 @@ export default {
       if (searchorderNo != "") paramsex.orderNo = searchorderNo;
       if (searchconsignee != "") paramsex.consignee = searchconsignee;
       if (searchphone != "") paramsex.phone = searchphone;
-      if (searchselect != "" && searchselect != "全部") paramsex.orderState = searchselect;
+      if (searchselect != "" && searchselect != "全部")
+        paramsex.orderState = searchselect;
       if (this.date)
         paramsex.date = JSON.stringify([
           getChinatime(this.date[0]),
-          getChinatime(this.date[1])
+          getChinatime(this.date[1]),
         ]);
 
-        this.paramsex = paramsex;
+      this.paramsex = paramsex;
 
-        this.getdata(this.paramsex)
+      this.getdata(this.paramsex);
     },
   },
   created() {

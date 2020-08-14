@@ -152,7 +152,7 @@ ul {
 #Data {
   height: 650px;
   #daTa {
-    width: 1247px;
+    width: 1268px;
 
     margin: 20px 0 0 0;
     background-color: #fff;

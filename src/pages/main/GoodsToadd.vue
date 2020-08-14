@@ -6,7 +6,7 @@
     <div class="main">
       <p>
         <span style="margin-left:30px">商品名称</span>
-        <el-input v-model="addlist.name" placeholder="商品名称" style="width:380px;margin-left:20px"></el-input>
+        <el-input  v-focus v-model="addlist.name" placeholder="商品名称" style="width:380px;margin-left:20px"></el-input>
       </p>
       <p>
         <span style="margin-left:30px">商品分类</span>
@@ -87,6 +87,13 @@ export default {
       GET_ITEMS_IMG: "" //图片下载地址
     };
   },
+  directives: {
+    focus: {
+        inserted: function (el) {
+        el.querySelector('input').focus()
+        }
+    }
+},
   methods: {
     uploadfinish(res) {
       if (res.code == 0) {

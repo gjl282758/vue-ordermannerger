@@ -1,7 +1,7 @@
 <template>
   <div id="box">
     <div class="login_box">
-      <p>Chicken系统登录</p>
+      <p>Chicken管理系统</p>
       <el-input  v-focus prefix-icon="el-icon-user-solid" placeholder="请输入内容" v-model="username" clearable></el-input>
       <el-input prefix-icon="el-icon-lock" placeholder="请输入密码" v-model="pwd" show-password @keydown.enter.native="clickSend"></el-input>
       <p class="error-p">{{errormsg}}</p>

@@ -31,7 +31,7 @@
           show-file-list
           :file-list="shopimgs"
           :on-preview="handlePictureCardPreview"
-          :on-remove="handleRemove"
+          :on-remove="removeImg"
           :on-success="handleAvatarSuccess"
         >
           <i class="el-icon-plus"></i>
@@ -122,10 +122,21 @@ export default {
         for (let key in res.data.data) {
           this[key] = res.data.data[key];
         }
+
+        this.shopimgs = this.pics.map((imgstr) => {
+          return {
+            name: imgstr,
+            url: GET_shop_IMG + imgstr,
+          };
+        });
       });
     },
-    // 删除图片
-    handleRemove(res) {
+
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    //移除店铺图片
+    removeImg(res) {
       // 要移除的图片名字
       console.log(res.name);
       // 找到并移除
@@ -137,6 +148,7 @@ export default {
     handphone(res) {
       if (res.code == 0) {
         this.avatar = res.imgUrl;
+        console.log(this.avatar);
         this.$message({
           type: "success",
           message: "店铺头像上传成功",
@@ -197,14 +209,8 @@ export default {
     this.GET_shop_IMG = GET_shop_IMG;
     this.Upload_shop_IMG = Upload_shop_IMG;
 
-    this.shopimgs = this.pics.map((imgstr) => {
-      return {
-        name: imgstr,
-        url: GET_shop_IMG + imgstr,
-      };
-    });
+    console.log(this.shopimgs);
     this.getshop();
-
   },
 };
 </script>

@@ -6,21 +6,22 @@
     <div class="main">
       <p>
         <span style="margin-left:15px">账号</span>
-        <input
+        <el-input
+          v-focus
           type="text"
           placeholder="请输入内容"
-          style=" width: 200px;margin-left: 20px;"
+          style=" width: 232px;margin-left: 20px;"
           v-model="username"
-        />
+        ></el-input>
       </p>
       <p>
         <span style="margin-left:15px">密码</span>
-        <input
+        <el-input
           type="password"
           placeholder="请输入内容"
-          style=" width: 200px;margin-left: 20px;"
+          style=" width: 232px;margin-left: 20px;"
           v-model="pwd"
-        />
+        ></el-input>
       </p>
       <p>
         <span>用户组</span>
@@ -52,7 +53,7 @@ export default {
           value: "普通管理员",
           label: "普通管理员",
         },
-      ],//账号权限数组
+      ], //账号权限数组
       usergroup: "", //权限
       username: "",
       pwd: "",
@@ -60,8 +61,7 @@ export default {
   },
   methods: {
     click_add() {
-
-      let { username, pwd, usergroup }=this;
+      let { username, pwd, usergroup } = this;
       useradd(username, pwd, usergroup).then((res) => {
         // console.log(res)
         if (res.data.code == 0) {
@@ -77,7 +77,15 @@ export default {
         this.username = "";
       });
     },
+    
   },
+  directives: {
+      focus: {
+        inserted: function (el) {
+          el.querySelector("input").focus();
+        },
+      },
+    },
 };
 </script>
 
@@ -109,13 +117,7 @@ export default {
         width: 232px;
         margin-left: 20px;
       }
-      input {
-        border: 1px solid #dcdfe6;
-        padding: 0 15px;
-        border-radius: 4px;
-        height: 40px;
-        line-height: 40px;
-      }
+      
     }
     div {
       margin-left: 68px;

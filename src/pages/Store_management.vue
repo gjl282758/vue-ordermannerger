@@ -13,7 +13,7 @@
       >
         <!-- 可展开菜单 -->
         <div class="logo">
-          <img src="../assets/imgs/logo.png"  alt="">
+          <img src="../assets/imgs/logo .png"  alt="">
           <span>专业做鸡二十年</span>
         </div>
         <div v-for="item in powerarr" :key="item.url">
@@ -263,8 +263,9 @@ a {
   align-items: center;
   flex-direction: column;
   span{
+    line-height: 40px;
     font-weight: bold;
-    color: rgb(243, 162, 12);
+    color: #dfb43f;
     font-size: 22px;
   }
 }

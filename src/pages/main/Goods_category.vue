@@ -7,7 +7,7 @@
           <span style="font-weight:bold">添加分类</span>
           <button @click="click_close">X</button>
         </div>
-        <p>
+        <p style="margin-top: 10px;">
           <span style="font-size:14px;color:#A6B1BA">分类名称</span>
           <el-input
             v-model="arr.cateNames"
@@ -15,14 +15,14 @@
             style="width:480px;margin-left:10px"
           ></el-input>
         </p>
-        <p>
+        <p style="margin-top: 10px;">
           <span style="font-size:14px;color:#A6B1BA">是否启用</span>
-            <el-switch
-              v-model="arr.states"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-              style="margin-left:10px"
-            ></el-switch>
+          <el-switch
+            v-model="arr.states"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            style="margin-left:10px"
+          ></el-switch>
         </p>
         <p>
           <el-button @click="click_close">取消</el-button>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="list">
-      <span>商品列表</span>
+      <span>商品分类</span>
       <el-button type="primary" @click="click_add">添加分类</el-button>
     </div>
 
@@ -46,8 +46,12 @@
       </el-table-column>
       <el-table-column property="state" label="是否启用" width="200">
         <template slot-scope="scope">
-              
-          <el-switch :disabled="!scope.row.isedit" v-model="scope.row.state" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+          <el-switch
+            :disabled="!scope.row.isedit"
+            v-model="scope.row.state"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+          ></el-switch>
         </template>
       </el-table-column>
       <el-table-column label="操作">
@@ -147,7 +151,6 @@ export default {
               message: "修改成功!",
             });
           }
-          
         });
       } else {
         //打开编辑状态
@@ -206,6 +209,7 @@ export default {
   created() {
     this.getcates();
   },
+  
 };
 </script>
 
@@ -250,6 +254,7 @@ body {
     padding: 20px;
     position: relative;
     p {
+      
       margin-left: 10px;
     }
     h4 {
@@ -274,7 +279,7 @@ body {
     }
     p:last-child {
       position: absolute;
-      bottom: 0;
+      bottom: 13px;
       right: 0;
       margin-right: 20px;
     }

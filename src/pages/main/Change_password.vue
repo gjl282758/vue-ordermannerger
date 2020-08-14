@@ -6,18 +6,19 @@
     <div class="main">
       <p>
         <span style="margin-left:30px">原密码</span>
-        <input
+        <el-input
           v-model="oldPwd"
           type="text"
           placeholder="请输入内容"
-          style=" width: 200px;margin-left: 20px;"
+          style=" width: 232px;margin-left: 20px;"
           @blur="blur_old"
-        />
+        ></el-input>
         <span v-show="isshow" style="margin-left:15px;color:red">{{msg}}</span>
       </p>
       <p>
         <span style="margin-left:30px">新密码</span>
         <el-input
+        v-focus
           placeholder="请输入密码"
           v-model="newPwd"
           style=" width: 232px;margin-left: 20px;"
@@ -133,6 +134,13 @@ export default {
           this.newsPwd = "";
     }
   },
+  directives: {
+      focus: {
+        inserted: function (el) {
+          el.querySelector("input").focus();
+        },
+      },
+    },
 };
 </script>
 
