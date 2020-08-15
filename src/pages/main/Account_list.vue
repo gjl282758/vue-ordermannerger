@@ -63,7 +63,7 @@
         :page-sizes="[5, 10, 15]"
         :page-size="pagthiseSize"
         layout="total, sizes, prev, pager, next, jumper"
-        :total="Total"
+        :total="toTal"
       ></el-pagination>
     </div>
     <div style="margin-top: 20px">
@@ -87,7 +87,7 @@ export default {
       },
       input_user: "",
       isshow: false,
-      Total: 100,
+      toTal: 0,
       tableData: [],
       multipleSelection: [],
       currentPage: 1,
@@ -142,14 +142,15 @@ export default {
         for (let obj of arr) {
           obj.ctime = getChinatime(obj.ctime);
         }
-
+        // console.log(res)
         // 本页数据
         this.tableData = arr;
 
         //总条数
         let toTal = res.data.total;
-        this.total = toTal;
-
+        this.toTal = toTal;
+        // console.log(toTal);
+        
         // console.log(this.id);
         // console.log(res.data.total)
       });

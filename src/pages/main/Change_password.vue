@@ -28,7 +28,7 @@
       <p>
         <span style="margin-left:15px">确认密码</span>
         <el-input
-          placeholder="请输入和上面一样的密码"
+          placeholder="两次密码必须一致"
           v-model="newsPwd"
           style=" width: 232px;margin-left: 20px;"
           show-password

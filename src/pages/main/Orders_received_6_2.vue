@@ -23,12 +23,12 @@ import { getChinatime } from "@/utils/utils";
 export default {
   data() {
     return {
-      date: [], //当前选择的时间
+      date: ["2020-06-01 00:00:00","2020-08-01 00:00:00"], //当前选择的时间
     };
   },
   methods: {
     clickSearch() {
-      alert(1)
+      // alert(1)
       let timestr = JSON.stringify([
         getChinatime(this.date[0]),
         getChinatime(this.date[1]),
@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     this.sechart= echarts.init(document.getElementById("salecount"))
-
+    this.refreshEcharts(JSON.stringify(this.date)) //设置默认时间
     
 
   },

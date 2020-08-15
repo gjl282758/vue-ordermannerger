@@ -4,6 +4,8 @@
     <div v-show="isshow" class="copy_box">
       <div>
         <button @click="click_X">X</button>
+          <span style="font-weight: bold;  font-size: 20px;margin-left:5px">订单详情:</span>
+
         <p>
           <span style="font-weight:bold;width:100px;display:inline-block;">订单号：</span>
           <span>{{orderNo}}</span>
@@ -379,8 +381,9 @@ body {
     left: 32%;
     padding: 20px;
     position: relative;
+    
     p {
-      margin: 8px 10px;
+      margin: 12px 10px;
     }
 
     button {

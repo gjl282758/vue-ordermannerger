@@ -26,6 +26,8 @@
       </el-form-item>
       <el-form-item label="店铺图片" style="width:400px;dispaly:flex;flex-warp:warp">
         <el-upload
+          :limit="4"
+          :on-exceed="handleExceed"
           :action="Upload_shop_IMG"
           list-type="picture-card"
           show-file-list
@@ -116,6 +118,12 @@ export default {
     };
   },
   methods: {
+    //图片墙限制
+    handleExceed() {
+            this.$message.warning(
+                `最多只能上传 4 张图片`
+            );
+        },
     //获取店铺管理详情
     getshop() {
       Shopdetails().then((res) => {
